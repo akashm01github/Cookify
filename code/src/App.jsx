@@ -1,8 +1,15 @@
 import React from 'react'
+import NavBar from './components/NavBar'
+import MainRoutes from './routes/MainRoutes'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <div className='text-3xl'>App</div>
+    <div className='flex flex-col justify-between h-screen'>
+      <NavBar/>
+      <MainRoutes/>
+      <Footer/>
+    </div>
   )
 }
 

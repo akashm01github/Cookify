@@ -1,1 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
 @import "tailwindcss";
+
+@theme {
+  --font-family-dancing: "Playwrite HU", cursive;
+  --font-family-heading: "Momo Trust Display", sans-serif;
+  --font-family-notFound: "Bebas Neue", sans-serif;
+}
