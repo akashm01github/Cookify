@@ -32,6 +32,7 @@ const NavBar = () => {
                         <NavLink to='/' >Home</NavLink>
                         <NavLink to='/about'>About</NavLink>
                         <NavLink to='/recipes'  >Recipes</NavLink>
+                        <NavLink to='/fav'  >Favourite</NavLink>
                         <NavLink to='/create-recipes'   className='md:border px-3 rounded-xl py-1 text-green-800 hover:bg-green-800 hover:text-white'>Create Recipes</NavLink>
                     </div>
 
@@ -44,6 +45,7 @@ const NavBar = () => {
                     <NavLink to='/' onClick={closeMenu}>Home</NavLink>
                     <NavLink to='/about' onClick={closeMenu} >About</NavLink>
                     <NavLink to='/recipes'  onClick={closeMenu}>Recipes</NavLink>
+                    <NavLink to='/fav' onClick={closeMenu} >Favourite</NavLink>
                     <NavLink to='/create-recipes' onClick={closeMenu} >Create Recipes</NavLink>
                 </div>
             </nav>

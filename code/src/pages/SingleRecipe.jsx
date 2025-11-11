@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ChefHat, ImageIcon, Book, UtensilsCrossed } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { MyRecipeContext } from "../context/RecipeContext";
@@ -48,6 +48,9 @@ const SingleRecipe = () => {
 
         setRecipes(copyData);
 
+        localStorage.setItem("recipesData",JSON.stringify(copyData));
+
+
         toast.success(`Recipe Updated`)
     };
 
@@ -55,7 +58,9 @@ const SingleRecipe = () => {
     const DeleteHandeler = () => {
         const filterData = recipes.filter((r) => r.id !== param.id);
 
-        setRecipes(filterData)
+        setRecipes(filterData);
+
+        localStorage.setItem("recipesData",JSON.stringify(filterData));
 
         console.log(`Data Deleted`)
 
@@ -64,30 +69,66 @@ const SingleRecipe = () => {
         toast.error('Recipe Deleted')
     }
 
+   const [favourite, setfavourite] = useState(JSON.parse(localStorage.getItem("fav")) || []);
+
+
+
+    const FavHandeler = ()=>{
+        const copyFav = [...favourite];
+
+        
+        copyFav.push(recipeData);
+
+        
+        setfavourite(copyFav);
+
+        
+        localStorage.setItem("fav", JSON.stringify(copyFav));
+
+        navigate('/fav')
+
+    }
+
+    const UnFavHandeler = ()=>{
+         
+        const filterFav = favourite.filter((f) => f.id != recipeData.id);
+
+        
+        setfavourite(filterFav);
+
+        
+        localStorage.setItem("fav", JSON.stringify(filterFav));
+
+        navigate('/fav');
+    }
+
+     useEffect(() => {
+    }, [favourite,UnFavHandeler,FavHandeler]);
+
     return (
         <div className="px-4 py-8 sm:p-4 md:p-6 lg:px-10 lg:py-10  min-h-screen">
             <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-start">
                 {/* -------- LEFT SIDE: Recipe Details -------- */}
-                <div className="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden">
+                <div className="bg-white shadow-lg rounded-xl sm:rounded-2xl overflow-hidden relative">
                     <img
-                        src={recipeData.recipe_Url}
+                        src={recipeData?.recipe_Url}
                         alt="Recipe"
                         className="w-full h-48 sm:h-56 md:h-64 lg:h-56 object-cover"
                     />
                     <div className="p-4 sm:p-5 md:p-6 space-y-3 sm:space-y-4">
                         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
-                            {recipeData.title}
+                            {recipeData?.title}
                         </h2>
                         <p className="text-xs sm:text-sm md:text-base text-gray-500">
-                            By Chef {recipeData.chefName}
+                            By Chef {recipeData?.chefName}
                         </p>
 
                         <div className="flex gap-2 items-center text-xs sm:text-sm md:text-base text-orange-600 font-semibold">
-                            <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5" /> {recipeData.category.toUpperCase()}
+                            <UtensilsCrossed className="w-4 h-4 sm:w-5 sm:h-5" /> {recipeData?.category.toUpperCase()}
                         </div>
 
                         <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                            {recipeData.description}
+                            {recipeData?.description}
                         </p>
 
                         <div>
@@ -95,7 +136,7 @@ const SingleRecipe = () => {
                                 Ingredients:
                             </h3>
                             <ul className="list-disc list-inside text-gray-600 text-xs sm:text-sm md:text-base space-y-1">
-                                {recipeData.ingredients}
+                                {recipeData?.ingredients}
                             </ul>
                         </div>
 
@@ -104,9 +145,16 @@ const SingleRecipe = () => {
                                 Instructions:
                             </h3>
                             <ol className="list-decimal list-inside text-gray-600 text-xs sm:text-sm md:text-base space-y-1">
-                                {recipeData.instructions}
+                                {recipeData?.instructions}
                             </ol>
                         </div>
+                    </div>
+
+                    {/* Favourite and Unfavourite */}
+
+                    <div className="flex justify-end p-3 items-center w-30 h-20 absolute top-0 right-0">
+                                {favourite.find((f)=>f.id == recipeData.id) ? ( <i onClick={UnFavHandeler} className="ri-heart-3-fill text-2xl sm:text-3xl md:text-5xl text-red-500 absolute"></i>) : ( <i onClick={FavHandeler} className="ri-heart-3-line text-2xl sm:text-3xl md:text-5xl absolute"></i>)}
+                               
                     </div>
                 </div>
 
