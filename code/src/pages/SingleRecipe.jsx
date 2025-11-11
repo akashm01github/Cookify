@@ -153,7 +153,7 @@ const SingleRecipe = () => {
                     {/* Favourite and Unfavourite */}
 
                     <div className="flex justify-end p-3 items-center w-30 h-20 absolute top-0 right-0">
-                                {favourite.find((f)=>f.id == recipeData.id) ? ( <i onClick={UnFavHandeler} className="ri-heart-3-fill text-2xl sm:text-3xl md:text-5xl text-red-500 absolute"></i>) : ( <i onClick={FavHandeler} className="ri-heart-3-line text-2xl sm:text-3xl md:text-5xl absolute"></i>)}
+                                {favourite.find((f)=>f.id == recipeData?.id) ? ( <i onClick={UnFavHandeler} className="ri-heart-3-fill text-2xl sm:text-3xl md:text-5xl text-red-500 absolute"></i>) : ( <i onClick={FavHandeler} className="ri-heart-3-line text-2xl sm:text-3xl md:text-5xl absolute"></i>)}
                                
                     </div>
                 </div>
