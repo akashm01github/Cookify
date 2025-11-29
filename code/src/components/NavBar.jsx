@@ -37,7 +37,7 @@ const NavBar = () => {
                     </div>
 
 
-                    <i onClick={toggleMenu} className="ri-menu-line md:hidden"></i>
+                    <i onClick={toggleMenu} className="ri-menu-line md:hidden text-3xl"></i>
                 </div>
 
 

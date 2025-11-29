@@ -27,7 +27,7 @@ const Fav = () => {
 
                 {/* Content */}
                 {fav.length > 0 ? (
-                    <div className='max-w-7xl mx-auto flex flex-wrap gap-6 justify-center lg:justify-start'>
+                    <div className='max-w-7xl mx-auto flex flex-wrap gap-6 justify-center lg:justify-center'>
                         {renderData}
                     </div>
                 ) : (
