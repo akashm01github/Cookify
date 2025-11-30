@@ -11,9 +11,6 @@ You can **add, edit, delete, and favorite recipes** — all handled with global 
 
 ---
 
-## 🖥️ App Preview
-<img src="https://via.placeholder.com/300x600?text=Add+Mobile+Screenshot" alt="Mobile Screenshot" width="250"/>
-
 
 ---
 
