@@ -12,8 +12,6 @@ You can **add, edit, delete, and favorite recipes** — all handled with global 
 ---
 
 
----
-
 ## 🛠️ Tech Stack
 
 <p align="left">
